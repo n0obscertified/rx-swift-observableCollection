@@ -11,15 +11,15 @@ import Foundation
 
 public struct CollectionChangedEvent{
 	
-	public let insertedIndeces: [Int]
-	public let deletedIndeces: [Int]
-	public let updatedIndeces: [Int]
+	public let insertedIndices: [Int]
+	public let deletedIndices: [Int]
+	public let updatedIndices: [Int]
 	
 	init(inserted:[Int] = [], deleted: [Int] = [],updated:[Int] = []){
 		assert(inserted.count + deleted.count + updated.count > 0)
 		
-		insertedIndeces = inserted
-		deletedIndeces = deleted
-		updatedIndeces = updated
+		insertedIndices = inserted
+		deletedIndices = deleted
+		updatedIndices = updated
 	}
 }

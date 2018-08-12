@@ -49,7 +49,7 @@ class ObservableCollectionTests: XCTestCase {
 		
 		
 		t.rx.subscribe { (event) in
-			print(event.element?.event.updatedIndeces.count)
+			print(event.element?.event.updatedIndices.count)
 		}
 		
 		var elements = something(string: "", int: 0, money: 0.0)
