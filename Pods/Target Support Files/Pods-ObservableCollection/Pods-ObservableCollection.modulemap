@@ -1,0 +1,6 @@
+framework module Pods_ObservableCollection {
+  umbrella header "Pods-ObservableCollection-umbrella.h"
+
+  export *
+  module * { export * }
+}
