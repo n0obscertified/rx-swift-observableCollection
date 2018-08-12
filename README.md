@@ -16,14 +16,14 @@ protocol NotifyChanged: class {
     }
 ```
 
-This protocol really only has one thing of note and that this the  generic set method that can be used as below.
+This protocol really only has one thing of note, and that is this  generic set method that can be used as below.
 ```Swift
         elements.set(keyPath: \something.money, value: 100) 
         /// you can use the set method to set any variable in your class this method emits an event on the obeservable collection letting the subscriber that an element in the observable collection has changed.
         ///
 
         NOTE:
-		elements.money = 100 //does not emit collection changed event
+        elements.money = 100 //does not emit collection changed event
 
 ```
 # Full Example
