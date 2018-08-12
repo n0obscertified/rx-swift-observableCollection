@@ -15,3 +15,39 @@ protocol NotifyChanged: class {
 	var elementChanged: PublishSubject<(keyPath: AnyKeyPath, old:Any, new:Any)>{ get }
     }
 ```
+
+This protocol really only has one thing of note and that this the  generic set method that can be used as below.
+
+```swift
+final class something:NotifyChanged { //any class that inherits this must be a final class probably because im still a n0_ob
+			var elementChanged: PublishSubject<(keyPath: AnyKeyPath, old: Any, new: Any)>
+			
+			var string:String
+			var int:Int
+			var money: Double
+			init(string:String,int:Int, money:Double) {
+				self.string = string
+				self.int = int
+				
+				self.money = money
+				
+				
+				elementChanged = PublishSubject<(keyPath: AnyKeyPath, old: Any, new: Any)>()
+			}
+		}
+		var t = ObservableCollection<something>()
+		
+		
+		t.rx.subscribe { (event) in
+			print(event.element?.event.updatedIndeces.count)
+		}
+		
+		var elements = something(string: "", int: 0, money: 0.0)
+		
+		t.append(elements)
+		elements.set(keyPath: \something.money, value: 100) /// you can use the set method to set any variable in your class this method emits an event on the obeservable collection letting the subscriber that an element in the observable collection has changed.
+        ///
+		t.append(something(string: "", int: 0, money: 100.0))
+		t[1].money = 0 // or set the class directly.
+
+```
